@@ -1,0 +1,48 @@
+{
+  "name": "dscode",
+  "version": "1.0.0",
+  "description": "Docker starter project for Digital Ocean droplet",
+  "main": "index.js",
+  "scripts": {
+    "pwd": "echo 'Example: openssl passwd -crypt `${PWD}`",
+    "pwd2": "echo 'Example: echo -n `${PWD}` | openssl dgst -sha256",
+    "scpup": "scp -F c:\\Users\\denbrige\\.ssh\\config -i C:\\Users\\denbrige\\.ssh\\id_rsa_bt -r d:\\docker\\teedy root@142.93.12.220:/root",
+    "scpdown": "scp -F c:\\Users\\denbrige\\.ssh\\config -i C:\\Users\\denbrige\\.ssh\\id_rsa_bt -r root@142.93.12.220:/root/teedy d:\\docker",
+    "scpup1": "scp -F c:\\Users\\denbrige\\.ssh\\config -i C:\\Users\\denbrige\\.ssh\\id_rsa_bt default.conf root@142.93.12.220:/root/nginx/",
+    "scpup2": "scp -F c:\\Users\\denbrige\\.ssh\\config -i C:\\Users\\denbrige\\.ssh\\id_rsa_bt docker-compose.yml root@142.93.12.220:/root/",
+    "ssh": "ssh -F C:\\Users\\denbrige\\.ssh\\config -i C:\\Users\\denbrige\\.ssh\\id_rsa_bt root@142.93.12.220",
+    "build": "docker image build -t ",
+    "up": "docker-compose up -d",
+    "clean": "docker-compose down --rmi all",
+    "down": "docker-compose down",
+    "stop": "docker-compose stop",
+    "start": "docker-compose start",
+    "restart": "docker-compose restart",
+    "ls": "docker image ls && docker container ls -a",
+    "sshkeygen": "gulp -f js/gulp.js keygen",
+    "sshmkswap": "gulp -f js/gulp.js mkswap"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dennislwm/dscode.git"
+  },
+  "keywords": [
+    "dscode",
+    "code-server",
+    "doc",
+    "digitalocean",
+    "docker",
+    "starter",
+    "droplet"
+  ],
+  "author": "dennislwm",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/dennislwm/dscode/issues"
+  },
+  "homepage": "https://github.com/dennislwm/dscode#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "readline-sync": "^1.4.10"
+  }
+}
