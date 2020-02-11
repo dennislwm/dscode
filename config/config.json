@@ -1,3 +1,4 @@
 {
-  "sshpath": "c:\\users\\denbrige\\.ssh\\"
+  "sshpath": "c:\\users\\denbrige\\.ssh\\",
+  "sshpathwsl": "/mnt/c/users/denbrige/.ssh/"
 }

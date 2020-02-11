@@ -2,8 +2,6 @@
 // Include files
 //
 var fs = require('fs');
-var gulp = require('gulp');
-var tap = require('gulp-tap');
 
 module.exports = {
   //

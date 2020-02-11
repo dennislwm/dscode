@@ -4,6 +4,7 @@
   "description": "Docker starter project for Digital Ocean droplet",
   "main": "index.js",
   "scripts": {
+    "cp": "docker cp objCouchDb:/opt/couchdb/etc/ ./",
     "pwd": "echo 'Example: openssl passwd -crypt `${PWD}`",
     "pwd2": "echo 'Example: echo -n `${PWD}` | openssl dgst -sha256",
     "scpup": "scp -F c:\\Users\\denbrige\\.ssh\\config -i C:\\Users\\denbrige\\.ssh\\id_rsa_bt -r d:\\docker\\teedy root@142.93.12.220:/root",

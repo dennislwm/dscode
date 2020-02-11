@@ -69,9 +69,10 @@ gulp.task('keygen', done => {
     //
     return done();
 
+  var strIdFileWsl = jsnFile.sshpathwsl + strInput;
   strIPaddr.forEach(function(ip) {
     var strOutput = exec(
-      'ssh-copy-id -f -i ' + strIdFile + ' root@' + ip
+      'wsl ssh-copy-id -f -i ' + strIdFileWsl + ' root@' + ip
     ).toString();
     console.log(strOutput);
   });
