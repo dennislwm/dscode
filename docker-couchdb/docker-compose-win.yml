@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  couchdb:
+    # navigate to http://127.0.0.1:5984/_utils/ for CouchDb UI
+    image: couchdb
+    container_name: objCouchDb
+    # expose port
+    ports:
+      - 5984:5984
+    # (optional) opt/couchdb/etc/local.ini
+    volumes:
+      - d:\docker\couchdb\data:/opt/couchdb/data:rw
+      - d:\docker\couchdb\log:/opt/couchdb/log:rw
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=password
