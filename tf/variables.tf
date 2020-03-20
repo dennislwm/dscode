@@ -6,8 +6,6 @@
 //    5. Any -var and -var-file options on the command line, in the order they are provided. (This includes variables set by a Terraform Cloud workspace.)
 
 variable strDoToken {
-  default = "d0c61d31f93945dca0483d6439a936fa40a52660cc704f1572fdfcb662c19194"
-  //default     = "e873ff40513cff10e9e3ece121bfb443118a0b5981482e124eac10edfa959399"
   description = "DigitalOcean Token required for API access"
 }
 variable strSshPath {
