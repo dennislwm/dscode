@@ -14,7 +14,15 @@ variable strSshPath {
 }
 variable strSshId {
   default     = "id_rsa_do1.pub"
-  description = "Name of local SSH .pub file"
+  description = "Name of local SSH public_key file"
+}
+variable strSshPte {
+  default     = "id_rsa_do1"
+  description = "Name of local SSH private_key file"
+}
+variable strRootPath {
+  default     = "d:\\denbrige\\180 FxOption\\103 FxOptionVerBack\\083 FX-Git-Pull\\19dscode\\"
+  description = "Path to local root folder"
 }
 variable strDoProject {
   default     = "Terraform Dummy Project"

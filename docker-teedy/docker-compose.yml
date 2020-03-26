@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  teedy:
+    image: jdreinhardt/teedy
+    container_name: objTeedy
+    # expose port host:teedy
+    ports:
+      - 80:8080
+    # in ubuntu, use /root/teedy
+    volumes:
+      - /root/teedy:/data:rw

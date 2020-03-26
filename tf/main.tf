@@ -20,6 +20,9 @@ module couchdb {
   //  Use default variables.tf in root folder
   //
   objSshKey   = [digitalocean_ssh_key.objSshKey.fingerprint]
+  strSshPath  = var.strSshPath
+  strSshPte   = var.strSshPte
+  strRootPath = var.strRootPath
   strDoRegion = var.strDoRegion
   strDoSize   = var.strDoSize
 }
@@ -35,6 +38,9 @@ module teedy {
   //  Use default variables.tf in root folder
   //
   objSshKey   = [digitalocean_ssh_key.objSshKey.fingerprint]
+  strSshPath  = var.strSshPath
+  strSshPte   = var.strSshPte
+  strRootPath = var.strRootPath
   strDoRegion = var.strDoRegion
   strDoSize   = var.strDoSize
 }

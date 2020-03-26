@@ -13,7 +13,7 @@
     "scpup1": "scp -F c:\\Users\\denbrige\\.ssh\\config -i C:\\Users\\denbrige\\.ssh\\id_rsa_bt default.conf root@142.93.12.220:/root/nginx/",
     "scpup2": "scp -F c:\\Users\\denbrige\\.ssh\\config -i C:\\Users\\denbrige\\.ssh\\id_rsa_bt docker-compose.yml root@142.93.12.220:/root/",
     "scpdir": "scp -F c:\\Users\\denbrige\\.ssh\\config -i C:\\Users\\denbrige\\.ssh\\id_rsa_do1 -r docker-couchdb root@142.93.12.220:/root/",
-    "ssh": "ssh -F C:\\Users\\denbrige\\.ssh\\config -i C:\\Users\\denbrige\\.ssh\\id_rsa_bt root@142.93.12.220",
+    "ssh": "ssh -F C:\\Users\\denbrige\\.ssh\\config -i C:\\Users\\denbrige\\.ssh\\id_rsa_do1 root@167.71.198.35",
     "build": "docker build -t image .",
     "up": "docker-compose up -d",
     "up-win": "docker-compose -f docker-compose-win.yml up -d",
@@ -33,9 +33,10 @@
     "testdb": "curl -s localhost:5984",
     "tfws": "cd tf && terraform workspace list && cd ..",
     "tfinit": "cd tf && terraform init && cd ..",
-    "tfplan": "cd tf && terraform plan && cd ..",
-    "tfapply": "cd tf && terraform apply && cd ..",
-    "tfdestroy": "cd tf && terraform destroy && cd .."
+    "tfplan": "cd tf && terraform plan -out prod.plan && cd ..",
+    "tfapply": "cd tf && terraform apply prod.plan && cd ..",
+    "tfdestroy": "cd tf && terraform destroy && cd ..",
+    "tfshow": "cd tf && terraform show && cd .."
   },
   "repository": {
     "type": "git",
