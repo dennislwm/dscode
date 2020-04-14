@@ -10,3 +10,6 @@ output "server_ip_couchdb" {
 output "server_ip_teedy" {
   value = module.teedy.server_ip
 }
+output "server_ip_jitsi" {
+  value = module.jitsi.server_ip
+}

@@ -78,6 +78,10 @@ TODO: In each module, provision for backing up the remote files to local folders
                 |- couchdb.tf         <-- Resources TF file
                 |- variables.tf       <-- Overrides inputs of variables.tf file in root
                 |- outputs.tf         <-- Returns outputs in module to main.tf file in root
+             +- jitsi/                <-- Holds any TF files for Jitsi
+                |- jitsi.tf           <-- Resources TF file
+                |- variables.tf       <-- Overrides inputs of variables.tf file in root
+                |- outputs.tf         <-- Returns outputs in module to main.tf file in root
              +- teedy/                <-- Holds any TF files for Teedy
                 |- couchdb.tf         <-- Resources TF file
                 |- variables.tf       <-- Overrides inputs of variables.tf file in root

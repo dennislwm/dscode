@@ -47,6 +47,24 @@ module teedy {
   strDoRegion = var.strDoRegion
 }
 
+module jitsi {
+  //
+  //  Override in variables.tf file in modules folder
+  //    strDoProject
+  //    strDoImage
+  //    strDoSize
+  //
+  source = "./modules/jitsi/"
+  //
+  //  Use default variables.tf in root folder
+  //
+  objSshKey   = [digitalocean_ssh_key.objSshKey.fingerprint]
+  strSshPath  = var.strSshPath
+  strSshPte   = var.strSshPte
+  strRootPath = var.strRootPath
+  strDoRegion = var.strDoRegion
+}
+
 //  Get Account
 //
 data "digitalocean_account" "objDoAcct" {}

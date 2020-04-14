@@ -2,16 +2,13 @@ variable objSshKey {
   description = "DigitalOcean SSH Key (use default in root)"
 }
 variable strSshPath {
-  default     = "c:\\users\\denbrige\\.ssh\\"
-  description = "Path to local SSH folder"
+  description = "Path to local SSH folder (use default in root)"
 }
 variable strSshPte {
-  default     = "id_rsa_do1"
-  description = "Name of local SSH private_key file"
+  description = "Name of local SSH private_key file (use default in root)"
 }
 variable strRootPath {
-  default     = "d:\\denbrige\\180 FxOption\\103 FxOptionVerBack\\083 FX-Git-Pull\\19dscode\\"
-  description = "Path to local root folder"
+  description = "Path to local root folder (use default in root)"
 }
 variable strDoProject {
   default     = "Teedy"
@@ -26,5 +23,5 @@ variable strDoRegion {
 }
 variable strDoSize {
   default     = "s-2vcpu-4gb"
-  description = "Size for droplet (use default in root)"
+  description = "Size for droplet (override in modules)"
 }
