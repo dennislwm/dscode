@@ -9,6 +9,8 @@ resource "digitalocean_ssh_key" "objSshKey" {
   public_key = file(format("%s%s", var.strSshPath, var.strSshId))
 }
 
+//
+//  Modules
 module couchdb {
   //
   //  Override in variables.tf file in modules folder
@@ -32,6 +34,7 @@ module teedy {
   //  Override in variables.tf file in modules folder
   //    strDoProject
   //    strDoImage
+  //    strDoSize
   //
   source = "./modules/teedy/"
   //
@@ -42,7 +45,6 @@ module teedy {
   strSshPte   = var.strSshPte
   strRootPath = var.strRootPath
   strDoRegion = var.strDoRegion
-  strDoSize   = var.strDoSize
 }
 
 //  Get Account

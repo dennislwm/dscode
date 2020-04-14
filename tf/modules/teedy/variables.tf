@@ -25,5 +25,6 @@ variable strDoRegion {
   description = "Region for droplet (use default in root)"
 }
 variable strDoSize {
+  default     = "s-2vcpu-4gb"
   description = "Size for droplet (use default in root)"
 }

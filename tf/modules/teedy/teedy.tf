@@ -60,3 +60,18 @@ resource "digitalocean_project" "objDoProject" {
   name      = var.strDoProject
   resources = [digitalocean_droplet.objTeedy.urn]
 }
+
+//
+//  Create a domain for this project
+resource "digitalocean_domain" "objDomain" {
+  name       = "markit.work"
+  ip_address = digitalocean_droplet.objTeedy.ipv4_address
+}
+//
+//  Add a CNAME record to redirect www
+resource "digitalocean_record" "objCname" {
+  domain = digitalocean_domain.objDomain.name
+  type   = "CNAME"
+  name   = "www"
+  value  = "@"
+}
