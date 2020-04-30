@@ -1,0 +1,186 @@
+{
+	"version": "2.0.0",
+	"command": "C:\\Program Files\\Git\\Bin\\bash.exe",
+	"args": [
+		"-c"
+	],
+	"tasks": [
+		{
+			"label": "docker-compose",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"${input:dockercmd}"
+			]
+		},
+		{
+			"label": "git-0-status",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"status"
+			],
+			"problemMatcher": []
+		},
+		{
+			"label": "git-1-add",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"add",
+				"${input:localfile}"
+			],
+			"problemMatcher": []
+		},
+		{
+			"label": "git-2-commit",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"commit",
+				"${input:localfile}",
+				"-m",
+				"${input:msg}"
+			]
+		},
+		{
+			"label": "git-3-push",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"push"
+			]
+		},
+		{
+			"label": "scp-3-downdir",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"scp",
+				"-r",
+				"root@${input:ip_address}:${input:remotedir}",
+				"${input:localdir}"
+			]
+		},
+		{
+			"label": "scp-1-up",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"scp",
+				"${input:localfile}",
+				"root@${input:ip_address}:${input:remotedir}"
+			]
+		},
+		{
+			"label": "scp-2-updir",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"scp",
+				"-r",
+				"${input:localdir}",
+				"root@${input:ip_address}:${input:remotedir}"
+			]
+		},
+		{
+			"label": "ssh",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"ssh",
+				"root@${input:ip_address}"
+			]
+		},
+		{
+			"label": "tf",
+			"args": [
+				"npm run tf ${input:tfcmd}"
+			]
+		}
+	],
+	"inputs": [
+		{
+			"id": "dockercmd",
+			"type": "command",
+			"command": "memento.promptString",
+			"args": {
+				"id": "dockercmd",
+				"description": "up, down, stop, start, restart, logs, OR clean",
+				"default": "up",
+				"placeholder": "Docker-compose command"
+			}
+		},
+		{
+			"id": "msg",
+			"type": "command",
+			"command": "memento.promptString",
+			"args": {
+				"id": "msg",
+				"description": "message",
+				"default": "",
+				"placeholder": "message"
+			}
+		},
+		{
+			"id": "localdir",
+			"type": "command",
+			"command": "memento.promptString",
+			"args": {
+				"id": "localdir",
+				"description": "Local folder",
+				"default": "bin",
+				"placeholder": "Local folder"
+			}
+		},
+		{
+			"id": "localfile",
+			"type": "command",
+			"command": "memento.promptString",
+			"args": {
+				"id": "localfile",
+				"description": "Local file",
+				"default": "default.conf",
+				"placeholder": "Local file"
+			}
+		},
+		{
+			"id": "remotedir",
+			"type": "command",
+			"command": "memento.promptString",
+			"args": {
+				"id": "remotedir",
+				"description": "Remote folder",
+				"default": "/root/",
+				"placeholder": "Remote folder"
+			}
+		},
+		{
+			"id": "ip_address",
+			"type": "command",
+			"command": "memento.promptString",
+			"args": {
+				"id": "ip_address",
+				"description": "Remote IP address",
+				"default": "165.22.241.114",
+				"placeholder": "IP address"
+			}
+		},
+		{
+			"id": "tfcmd",
+			"type": "command",
+			"command": "memento.promptString",
+			"args": {
+				"id": "tfcmd",
+				"description": "show, init, plan, apply OR destroy",
+				"default": "show",
+				"placeholder": "Terraform command"
+			}
+		}
+	]
+}

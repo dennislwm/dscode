@@ -128,6 +128,8 @@ Type the following command in your terminal:
 
 Before typing 'yes', ensure that ALL resources Terraform will **destroy** are correct.
 
+Note: Add optional parameter "-target=module.mymodule" to destroy a given module, eg. "terraform destroy -target=module.jitsi"
+
 ---
 
 ### Reach Out!
