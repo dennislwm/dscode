@@ -5,7 +5,23 @@ services:
     container_name: objTeedy
     # expose port host:teedy
     ports:
-      - 80:8080
+      - 8080:8080
     # in ubuntu, use /root/teedy
     volumes:
       - /root/teedy:/data:rw
+
+  caddy:
+    # navigate to http://127.0.0.1/ for Caddy
+    # alternative Caddy v1 abiosoft/caddy
+    image: abiosoft/caddy
+    container_name: objCaddy
+    # expose port
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /root/teedy/Caddyfile:/etc/Caddyfile:rw
+      - /root/teedy/.caddy:/root/.caddy:rw
+    depends_on: 
+      - teedy
+      

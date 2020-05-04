@@ -17,7 +17,7 @@ resource "digitalocean_droplet" "objCouchdb" {
   //
   // make remote folders in /root/
   provisioner "remote-exec" {
-    inline     = ["sudo mkdir /root/bin/", "sudo mkdir /root/docker-couchdb/", "sudo mkdir /root/couchdb/"]
+    inline     = ["sudo mkdir /root/bin/", "sudo mkdir /root/docker-couchdb/", "sudo mkdir /root/couchdb/", "sudo mkdir /root/couchdb/.caddy/"]
     on_failure = continue
   }
   //
@@ -35,6 +35,13 @@ resource "digitalocean_droplet" "objCouchdb" {
     on_failure  = continue
   }
   //
+  // copy data files to remote folder
+  provisioner "file" {
+    source      = "${var.strRootPath}\\docker-couchdb\\Caddyfile"
+    destination = "/root/couchdb/Caddyfile"
+    on_failure  = continue
+  }
+  //
   // copy docker files to remote folder
   provisioner "file" {
     source      = "${var.strRootPath}\\docker-couchdb\\docker-compose.yml"
@@ -48,10 +55,13 @@ resource "digitalocean_droplet" "objCouchdb" {
     inline     = ["sudo chmod 700 /root/bin/mkswap.sh", "sudo /root/bin/mkswap.sh"]
     on_failure = continue
   }
-  provisioner "remote-exec" {
-    inline     = ["cd /root/docker-couchdb/", "sudo docker-compose up -d"]
-    on_failure = continue
-  }
+  //
+  // SSH to remote server and execute commands in the /root/docker-caddy/ folder.
+  // This cannot be provisioned as you must login to NOIP.com and update:
+  // host teedy.myvnc.com to new IP address
+  //  Step 1:
+  //    $ docker-compose up -d
+  //
 }
 
 //

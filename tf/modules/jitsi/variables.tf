@@ -10,6 +10,9 @@ variable strSshPte {
 variable strRootPath {
   description = "Path to local root folder (use default in root)"
 }
+variable strDoDomain {
+  description = "Name of custom domain (override in modules)"
+}
 variable strDoProject {
   default     = "Jitsi"
   description = "Name of project per droplet (override in modules)"
@@ -22,6 +25,6 @@ variable strDoRegion {
   description = "Region for droplet (use default in root)"
 }
 variable strDoSize {
-  default     = "s-4vcpu-8gb"
+  default     = "c-2"
   description = "Size for droplet (override in modules)"
 }

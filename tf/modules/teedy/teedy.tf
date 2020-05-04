@@ -17,7 +17,7 @@ resource "digitalocean_droplet" "objTeedy" {
   //
   // make remote folders in /root/
   provisioner "remote-exec" {
-    inline     = ["sudo mkdir /root/bin/", "sudo mkdir /root/docker-teedy/"]
+    inline     = ["sudo mkdir /root/bin/", "sudo mkdir /root/docker-teedy/", "sudo mkdir /root/teedy/", "sudo mkdir /root/teedy/.caddy/"]
     on_failure = continue
   }
   //
@@ -35,6 +35,13 @@ resource "digitalocean_droplet" "objTeedy" {
     on_failure  = continue
   }
   //
+  // copy data files to remote folder
+  provisioner "file" {
+    source      = "${var.strRootPath}\\docker-teedy\\Caddyfile"
+    destination = "/root/teedy/Caddyfile"
+    on_failure  = continue
+  }
+  //
   // copy docker files to remote folder
   provisioner "file" {
     source      = "${var.strRootPath}\\docker-teedy\\docker-compose.yml"
@@ -48,10 +55,13 @@ resource "digitalocean_droplet" "objTeedy" {
     inline     = ["sudo chmod 700 /root/bin/mkswap.sh", "sudo /root/bin/mkswap.sh"]
     on_failure = continue
   }
-  provisioner "remote-exec" {
-    inline     = ["cd /root/docker-teedy/", "sudo docker-compose up -d"]
-    on_failure = continue
-  }
+  //
+  // SSH to remote server and execute commands in the /root/docker-caddy/ folder.
+  // This cannot be provisioned as you must login to NOIP.com and update:
+  // host teedy.myvnc.com to new IP address
+  //  Step 1:
+  //    $ docker-compose up -d
+  //
 }
 
 //

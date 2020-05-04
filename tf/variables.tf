@@ -24,6 +24,10 @@ variable strRootPath {
   default     = "d:\\denbrige\\180 FxOption\\103 FxOptionVerBack\\083 FX-Git-Pull\\19dscode\\"
   description = "Path to local root folder"
 }
+variable strDoDomain {
+  default     = "markit.work"
+  description = "Name of custom domain (override in modules)"
+}
 variable strDoProject {
   default     = "Terraform Dummy Project"
   description = "Name of project per droplet (override in modules)"

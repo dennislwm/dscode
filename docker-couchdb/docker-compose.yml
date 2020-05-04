@@ -14,3 +14,18 @@ services:
     environment:
       - COUCHDB_USER=admin
       - COUCHDB_PASSWORD=password
+
+  caddy:
+    # navigate to http://127.0.0.1/ for Caddy
+    # alternative Caddy v1 abiosoft/caddy
+    image: abiosoft/caddy
+    container_name: objCaddy
+    # expose port
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /root/couchdb/Caddyfile:/etc/Caddyfile:rw
+      - /root/couchdb/.caddy:/root/.caddy:rw
+    depends_on: 
+      - couchdb

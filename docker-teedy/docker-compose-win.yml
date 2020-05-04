@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  teedy:
+    # navigate to http://127.0.0.1:8080/ for Teedy UI
+    image: jdreinhardt/teedy
+    container_name: objTeedy
+    # expose port
+    ports:
+      - 8080:8080
+    volumes:
+      - d:\docker\teedy:/data:rw

@@ -10,7 +10,7 @@ resource "digitalocean_ssh_key" "objSshKey" {
 }
 
 //
-//  Modules
+//  Modules with NOIP domain
 module couchdb {
   //
   //  Override in variables.tf file in modules folder
@@ -19,7 +19,7 @@ module couchdb {
   //
   source = "./modules/couchdb/"
   //
-  //  Use default variables.tf in root folder
+  //  Declare BELOW to use GENERIC variables.tf in root folder
   //
   objSshKey   = [digitalocean_ssh_key.objSshKey.fingerprint]
   strSshPath  = var.strSshPath
@@ -28,17 +28,15 @@ module couchdb {
   strDoRegion = var.strDoRegion
   strDoSize   = var.strDoSize
 }
-
 module teedy {
   //
   //  Override in variables.tf file in modules folder
   //    strDoProject
   //    strDoImage
-  //    strDoSize
   //
   source = "./modules/teedy/"
   //
-  //  Use default variables.tf in root folder
+  //  Declare BELOW to use GENERIC variables.tf in root folder
   //
   objSshKey   = [digitalocean_ssh_key.objSshKey.fingerprint]
   strSshPath  = var.strSshPath
@@ -47,6 +45,8 @@ module teedy {
   strDoRegion = var.strDoRegion
 }
 
+//
+//  Modules with DNS domain
 module jitsi {
   //
   //  Override in variables.tf file in modules folder
@@ -56,12 +56,13 @@ module jitsi {
   //
   source = "./modules/jitsi/"
   //
-  //  Use default variables.tf in root folder
+  //  Declare BELOW to use GENERIC variables.tf in root folder
   //
   objSshKey   = [digitalocean_ssh_key.objSshKey.fingerprint]
   strSshPath  = var.strSshPath
   strSshPte   = var.strSshPte
   strRootPath = var.strRootPath
+  strDoDomain = var.strDoDomain
   strDoRegion = var.strDoRegion
 }
 

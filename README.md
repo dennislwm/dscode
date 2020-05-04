@@ -48,23 +48,28 @@ In each module, we perform the following in Terraform via a SSH connection:
 ---
 ### Automate Backup of Files from Server
 
-TODO: In each module, provision for backing up the remote files to local folders.
+The backup of remote files from each droplet is done from the shell using a custom alias bash_scpdir().
 
 ---
 ### Project Structure
      dscode/                          <-- Root of your project
        |- package.json                <-- Node.js project entries
        |- README.md                   <-- This README markdown file
+       +- .vscode/                    <-- Holds any VS code files
+          |- tasks.json               <-- Holds any custom tasks (deprecated by bash aliases)
        +- bin/                        <-- Holds any executable files
           |- mkswap.sh                <-- Creates a swapfile in a Bash terminal for production
        +- config/                     <-- Holds any configuration files
           |- batchfile.txt            <-- List of IP addresses for Gulp (deprecated)
           |- ssh.conf                 <-- SSH configuration file
        +- docker-couchdb/             <-- Holds any docker files for CouchDB
+          |- Caddyfile                <-- Caddy configuration file for Let's Encrypt
           |- docker-compose.yml       <-- Docker compose file for production
           |- docker-compose-win.yml   <-- Docker compose file for development
        +- docker-teedy/               <-- Holds any docker files for Teedy
+          |- Caddyfile                <-- Caddy configuration file for Let's Encrypt
           |- docker-compose.yml       <-- Docker compose file for production
+          |- docker-compose-win.yml   <-- Docker compose file for development
        +- js/                         <-- Holds any Javascript files
           |- gulp.js                  <-- Automate scripts for deployment (deprecated)
           |- gulp-plus.js             <-- Custom include library (deprecated)

@@ -54,7 +54,7 @@ resource "digitalocean_project" "objDoProject" {
 //
 //  Create a domain for this project
 resource "digitalocean_domain" "objDomain" {
-  name       = "markit.work"
+  name       = var.strDoDomain
   ip_address = digitalocean_droplet.objJitsi.ipv4_address
 }
 //

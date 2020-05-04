@@ -39,8 +39,6 @@
 			"command": "git",
 			"args": [
 				"commit",
-				"${input:localfile}",
-				"-m",
 				"${input:msg}"
 			]
 		},
@@ -62,7 +60,8 @@
 				"-r",
 				"root@${input:ip_address}:${input:remotedir}",
 				"${input:localdir}"
-			]
+			],
+			"problemMatcher": []
 		},
 		{
 			"label": "scp-1-up",
@@ -101,7 +100,8 @@
 			"label": "tf",
 			"args": [
 				"npm run tf ${input:tfcmd}"
-			]
+			],
+			"problemMatcher": []
 		}
 	],
 	"inputs": [
@@ -122,8 +122,8 @@
 			"command": "memento.promptString",
 			"args": {
 				"id": "msg",
-				"description": "message",
-				"default": "",
+				"description": "message (remove -m msg for git editor)",
+				"default": "-m",
 				"placeholder": "message"
 			}
 		},
@@ -134,7 +134,7 @@
 			"args": {
 				"id": "localdir",
 				"description": "Local folder",
-				"default": "bin",
+				"default": "d:\\docker",
 				"placeholder": "Local folder"
 			}
 		},
