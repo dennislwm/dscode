@@ -1,0 +1,6 @@
+# Docs: https://caddyserver.com/v1/docs/proxy
+tinode.myvnc.com 
+
+proxy / http://tinode:6060 {
+	max_fails 3
+}

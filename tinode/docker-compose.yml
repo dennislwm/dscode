@@ -1,0 +1,32 @@
+version: '3.7'
+networks:
+  default:
+    external: true
+    name: objNet
+
+services:
+  #
+  # tinode looks for a container 'mysql'
+  tinode:
+    image: tinode/tinode-mongodb
+    container_name: objTinode
+    ports:
+      - 6060:6060
+    networks: 
+      - objNet
+
+  caddy:
+    # navigate to http://127.0.0.1/ for Caddy
+    # alternative Caddy v1 abiosoft/caddy
+    image: abiosoft/caddy
+    container_name: objCaddy
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /root/tinode/Caddyfile:/etc/Caddyfile:rw
+      - /root/tinode/.caddy:/root/.caddy:rw
+    networks: 
+      - objNet
+    depends_on: 
+      - tinode

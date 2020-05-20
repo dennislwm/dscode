@@ -10,6 +10,15 @@ output "server_ip_couchdb" {
 output "server_ip_jitsi" {
   value = module.jitsi.server_ip
 }
+output "server_ip_rqlite" {
+  value = module.rqlite.server_ip
+}
 output "server_ip_teedy" {
   value = module.teedy.server_ip
+}
+output "server_ip_tinode" {
+  value = module.tinode.server_ip
+}
+output "server_ip_wp" {
+  value = module.wp.server_ip
 }

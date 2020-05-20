@@ -1,0 +1,27 @@
+#
+# 1 Download both rqlite and sqlite Windows binaries
+# 2 Unzip to D:\Program folder
+# 3 Add both paths to enviroment variable PATH
+# 4 Run docker-compose up -d
+# 5 Change to d:\docker\rqlite
+# 6 Open command prompt and run sqlite3
+#     > sqlite3 GhostRecon.db
+# 7 Dump sqlite database
+#     sqlite3> .output GhostRecon.sql
+#     sqlite3> .dump
+#     sqlite3> .quit
+# 8 Run rqlite and restore database
+#     127.0.0.1:4001> .restore GhostRecon.sql
+#     127.0.0.1:4001> .schema
+#     127.0.0.1:4001> .quit
+#
+version: '3.7'
+services:
+  datasette:
+    image: rqlite/rqlite
+    container_name: objRqlite
+    ports:
+      - 4001:4001
+      - 4002:4002
+    volumes:
+      - /root/rqlite:/rqlite/file/data:rw
