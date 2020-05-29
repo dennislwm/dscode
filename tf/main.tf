@@ -11,6 +11,23 @@ resource "digitalocean_ssh_key" "objSshKey" {
 
 //
 //  Modules with IP address
+module fold {
+  //
+  //  Override in variables.tf file in modules folder
+  //    strDoProject
+  //    strDoImage
+  //    strDoSize
+  //
+  source = "./modules/fold"
+  //
+  //  Declare BELOW to use GENERIC variables.tf in root folder
+  //
+  objSshKey   = [digitalocean_ssh_key.objSshKey.fingerprint]
+  strSshPath  = var.strSshPath
+  strSshPte   = var.strSshPte
+  strRootPath = var.strRootPath
+  strDoRegion = var.strDoRegion
+}
 module rqlite {
   //
   //  Override in variables.tf file in modules folder
@@ -82,22 +99,6 @@ module tinode {
   strDoRegion = var.strDoRegion
   strDoSize   = var.strDoSize
 }
-module wp {
-  //
-  //  Override in variables.tf file in modules folder
-  //    strDoProject
-  //    strDoImage
-  //
-  source = "./modules/wp/"
-  //
-  //  Declare BELOW to use GENERIC variables.tf in root folder
-  //
-  objSshKey   = [digitalocean_ssh_key.objSshKey.fingerprint]
-  strSshPath  = var.strSshPath
-  strSshPte   = var.strSshPte
-  strRootPath = var.strRootPath
-  strDoRegion = var.strDoRegion
-}
 
 //
 //  Modules with DNS domain
@@ -117,6 +118,23 @@ module jitsi {
   strSshPte   = var.strSshPte
   strRootPath = var.strRootPath
   strDoDomain = var.strDoDomain
+  strDoRegion = var.strDoRegion
+}
+module wp {
+  //
+  //  Override in variables.tf file in modules folder
+  //    strDoProject
+  //    strDoImage
+  //    strDoSize
+  //
+  source = "./modules/wp/"
+  //
+  //  Declare BELOW to use GENERIC variables.tf in root folder
+  //
+  objSshKey   = [digitalocean_ssh_key.objSshKey.fingerprint]
+  strSshPath  = var.strSshPath
+  strSshPte   = var.strSshPte
+  strRootPath = var.strRootPath
   strDoRegion = var.strDoRegion
 }
 

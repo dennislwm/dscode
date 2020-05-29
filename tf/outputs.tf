@@ -7,6 +7,9 @@ output "droplet_limit" {
 output "server_ip_couchdb" {
   value = module.couchdb.server_ip
 }
+output "server_ip_fold" {
+  value = module.fold.server_ip
+}
 output "server_ip_jitsi" {
   value = module.jitsi.server_ip
 }
