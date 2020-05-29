@@ -1,0 +1,44 @@
+#
+# NOTE: The official WordPress Docker images now include wp-cli as a variant.
+#   You need to pull the image and run the containers via docker-compose.
+#   You need to complete the WordPress installation via a browser, e.g. localhost:8080.
+#   The wordpress:cli image variant does not contain WordPress itself, but instead contains WP-CLI.
+# Create and run both dummy containers, objWp and objDb, with the following command:
+#   $ docker-compose -f docker-compose-win.yml up -d
+# The simplest way to use it with an existing WordPress container, e.g. objWp, would be as follows:
+#   $ alias wp="docker run -it --rm --volumes-from objWp --network container:objWp wordpress:cli"
+#   $ wp --info
+# NOTE: To use SSH with wp-cli you need to copy an unofficial image bitroniq/docker-wordpress-cli-sage
+#   You need to modify the Dockerfile to add your SSH credentials and build your image wpssh
+#   $ alias wpssh="docker run -it --rm --volumes-from objWp --network container:objWp wpssh --ssh=root@domain/var/www/html --allow-root"
+#   $ wpssh --info
+#
+version: '3.7'
+services:
+  db:
+    image: mysql:5.7
+    container_name: objDb
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: somewordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+  wp:
+    depends_on:
+      - db
+    image: wordpress
+    container_name: objWp
+    ports:
+      - "8080:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+volumes:
+  wp:
+  db_data: {}
