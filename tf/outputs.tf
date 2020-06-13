@@ -22,6 +22,9 @@ output "server_ip_teedy" {
 output "server_ip_tinode" {
   value = module.tinode.server_ip
 }
+output "server_ip_rstudio" {
+  value = module.rstudio.server_ip
+}
 output "server_ip_wp" {
   value = module.wp.server_ip
 }

@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  rstudio:
+    image: rocker/rstudio
+    container_name: objRstudio
+    # expose port
+    ports:
+      - 8787:8787
+    volumes:
+      - /root/rstudio:/home/rstudio:rw
+    environment:
+      - PASSWORD=password   # required
+#      - USER=               # default user=rstudio
+#      - ROOT=TRUE           # give root permission
+#      - ADD=shiny           # add shiny server
+#      - DISABLE_AUTH=true   # disable password

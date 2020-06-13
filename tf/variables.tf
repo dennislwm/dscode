@@ -24,6 +24,10 @@ variable strRootPath {
   default     = "d:\\denbrige\\180 FxOption\\103 FxOptionVerBack\\083 FX-Git-Pull\\19dscode\\"
   description = "Path to local root folder"
 }
+variable strDataPath {
+  default     = "d:\\docker\\"
+  description = "Path to local data folder"
+}
 variable strDoDomain {
   default     = "markit.work"
   description = "Name of custom domain (override in modules)"
