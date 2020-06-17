@@ -10,8 +10,11 @@ variable strSshPte {
 variable strRootPath {
   description = "Path to local root folder (use default in root)"
 }
+variable strDataPath {
+  description = "Path to local data folder (use default in root)"
+}
 variable strDoProject {
-  default     = "Couchdb"
+  default     = "couchdb"
   description = "Name of project per droplet (override in modules)"
 }
 variable strDoImage {

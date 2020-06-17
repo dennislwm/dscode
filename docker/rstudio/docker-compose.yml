@@ -5,9 +5,9 @@ services:
     container_name: objRstudio
     # expose port
     ports:
-      - 8787:8787
+      - 80:8787
     volumes:
-      - /root/rstudio:/home/rstudio:rw
+      - /root/rstudio/R-source:/home/rstudio/R-source:rw
     environment:
       - PASSWORD=password   # required
 #      - USER=               # default user=rstudio

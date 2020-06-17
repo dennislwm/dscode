@@ -58,14 +58,18 @@ The backup of remote files from each droplet is done from the shell using a cust
        +- .vscode/                    <-- Holds any VS code files
           |- tasks.json               <-- Holds any custom tasks (deprecated by bash aliases)
        +- bin/                        <-- Holds any executable files
+          |- aptupdate.sh             <-- Updates apt-get and installs php modules
           |- mkswap.sh                <-- Creates a swapfile in a Bash terminal for production
+          |- wpbackup.sh              <-- WP-CLI backup of Wordpress files
+          |- wpclirc.sh               <-- WP-CLI alias file
+          |- wpinstall.sh             <-- WP-CLI install of Wordpress files
        +- config/                     <-- Holds any configuration files
           |- batchfile.txt            <-- List of IP addresses for Gulp (deprecated)
           |- ssh.conf                 <-- SSH configuration file
-       +- docker-couchdb/             <-- Holds any docker files for CouchDB
-          |- Caddyfile                <-- Caddy configuration file for Let's Encrypt
-          |- docker-compose.yml       <-- Docker compose file for production
-          |- docker-compose-win.yml   <-- Docker compose file for development
+       +- docker/                     <-- Root of docker files
+          +- couchdb/                 <-- Docker files for CouchDB
+          +- rstudio/                 <-- Docker files for RStudio
+          +- wp/                      <-- Docker files for WordPress (deprecated by OpenLiteSpeed image)
        +- docker-teedy/               <-- Holds any docker files for Teedy
           |- Caddyfile                <-- Caddy configuration file for Let's Encrypt
           |- docker-compose.yml       <-- Docker compose file for production
@@ -83,14 +87,13 @@ The backup of remote files from each droplet is done from the shell using a cust
                 |- couchdb.tf         <-- Resources TF file
                 |- variables.tf       <-- Overrides inputs of variables.tf file in root
                 |- outputs.tf         <-- Returns outputs in module to main.tf file in root
-             +- jitsi/                <-- Holds any TF files for Jitsi
-                |- jitsi.tf           <-- Resources TF file
-                |- variables.tf       <-- Overrides inputs of variables.tf file in root
-                |- outputs.tf         <-- Returns outputs in module to main.tf file in root
-             +- teedy/                <-- Holds any TF files for Teedy
-                |- couchdb.tf         <-- Resources TF file
-                |- variables.tf       <-- Overrides inputs of variables.tf file in root
-                |- outputs.tf         <-- Returns outputs in module to main.tf file in root
+             +- fold/                 <-- TF module files for Folding@Home
+             +- jitsi/                <-- TF module files for Jitsi
+             +- rqlite/               <-- TF module files for RqLite
+             +- rstudio/              <-- TF module files for RStudio
+             +- teedy/                <-- TF module files for Teedy
+             +- tinode/               <-- TF module files for Tinode
+             +- wp/                   <-- TF module files for WordPress
 
 ---
 ### Prerequisite

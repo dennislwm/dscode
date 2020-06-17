@@ -17,51 +17,50 @@ resource "digitalocean_droplet" "objCouchdb" {
   //
   // make remote folders in /root/
   provisioner "remote-exec" {
-    inline     = ["sudo mkdir /root/bin/", "sudo mkdir /root/docker-couchdb/", "sudo mkdir /root/couchdb/", "sudo mkdir /root/couchdb/.caddy/"]
+    inline     = ["sudo mkdir /root/bin/", "sudo mkdir /root/${var.strDoProject}", "sudo mkdir /root/${var.strDoProject}/.caddy/"]
     on_failure = continue
   }
   //
   // copy executable files to remote folder
   provisioner "file" {
-    source      = "${var.strRootPath}\\bin\\mkswap.sh"
-    destination = "/root/bin/mkswap.sh"
-    on_failure  = continue
-  }
-  //
-  // copy data files to remote folder
-  provisioner "file" {
-    source      = "d:\\docker\\couchdb\\"
+    source      = "${var.strRootPath}\\bin\\"
     destination = "/root/"
     on_failure  = continue
   }
   //
   // copy data files to remote folder
   provisioner "file" {
-    source      = "${var.strRootPath}\\docker-couchdb\\Caddyfile"
-    destination = "/root/couchdb/Caddyfile"
+    source      = "${var.strDataPath}\\${var.strDoProject}\\"
+    destination = "/root/"
+    on_failure  = continue
+  }
+  //
+  // copy data files to remote folder
+  provisioner "file" {
+    source      = "${var.strRootPath}\\docker\\${var.strDoProject}\\Caddyfile"
+    destination = "/root/${var.strDoProject}/Caddyfile"
     on_failure  = continue
   }
   //
   // copy docker files to remote folder
   provisioner "file" {
-    source      = "${var.strRootPath}\\docker-couchdb\\docker-compose.yml"
-    destination = "/root/docker-couchdb/docker-compose.yml"
+    source      = "${var.strRootPath}\\docker\\${var.strDoProject}\\docker-compose.yml"
+    destination = "/root/${var.strDoProject}/docker-compose.yml"
     on_failure  = continue
   }
 
   //
   // execute remote commands
   provisioner "remote-exec" {
-    inline     = ["sudo chmod 700 /root/bin/mkswap.sh", "sudo /root/bin/mkswap.sh"]
+    inline     = ["sudo chmod 700 /root/bin/mkswap.sh", "sudo /root/bin/mkswap.sh", "sudo chmod 700 /root/bin/setip.sh", "sudo /root/bin/setip.sh ${digitalocean_droplet.objCouchdb.ipv4_address} ${var.strDoProject}"]
     on_failure = continue
   }
   //
-  // SSH to remote server and execute commands in the /root/docker-caddy/ folder.
-  // This cannot be provisioned as you must login to NOIP.com and update:
-  // host teedy.myvnc.com to new IP address
-  //  Step 1:
-  //    $ docker-compose up -d
-  //
+  // execute remote commands
+  provisioner "remote-exec" {
+    inline     = ["cd /root/${var.strDoProject}", "sudo docker-compose up -d"]
+    on_failure = continue
+  }
 }
 
 //

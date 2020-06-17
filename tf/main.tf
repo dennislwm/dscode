@@ -81,6 +81,7 @@ module couchdb {
   strSshPath  = var.strSshPath
   strSshPte   = var.strSshPte
   strRootPath = var.strRootPath
+  strDataPath = var.strDataPath
   strDoRegion = var.strDoRegion
   strDoSize   = var.strDoSize
 }

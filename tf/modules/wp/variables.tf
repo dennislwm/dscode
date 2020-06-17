@@ -11,8 +11,12 @@ variable strRootPath {
   description = "Path to local root folder (use default in root)"
 }
 variable strDoProject {
-  default     = "WP"
+  default     = "wp"
   description = "Name of project per droplet (override in modules)"
+}
+variable strDoDomain {
+  default     = "klix.cam"
+  description = "Name of custom domain (override in modules)"
 }
 variable strDoImage {
   default     = "openlitespeed-wp-18-04"

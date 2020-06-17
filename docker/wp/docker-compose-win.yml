@@ -31,6 +31,8 @@ services:
       - db
     image: wordpress
     container_name: objWp
+    volumes:
+      - wp_data:/var/www/html:rw
     ports:
       - "8080:80"
     restart: always
@@ -41,4 +43,5 @@ services:
       WORDPRESS_DB_NAME: wordpress
 volumes:
   wp:
+  wp_data: {}
   db_data: {}

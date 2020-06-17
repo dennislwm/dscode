@@ -50,7 +50,7 @@ resource "digitalocean_droplet" "objRstudio" {
   //
   // execute remote commands
   provisioner "remote-exec" {
-    inline     = ["cd /root/${var.strDoProject}", "sudo docker run -d -p 80:8787 -e PASSWORD=password --name objRstudio rocker/${var.strDoProject}"]
+    inline     = ["cd /root/${var.strDoProject}", "sudo docker-compose up -d"]
     on_failure = continue
   }
 }

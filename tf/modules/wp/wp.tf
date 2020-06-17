@@ -1,3 +1,7 @@
+//  Get Account
+//
+data "digitalocean_account" "objDoAcct" {}
+
 //
 //  Create a droplet within a project
 resource "digitalocean_droplet" "objWp" {
@@ -23,20 +27,41 @@ resource "digitalocean_droplet" "objWp" {
   //
   // copy executable files to remote folder
   provisioner "file" {
-    source      = "${var.strRootPath}\\bin\\mkswap.sh"
-    destination = "/root/bin/mkswap.sh"
+    source      = "${var.strRootPath}\\bin"
+    destination = "/root/"
     on_failure  = continue
   }
-
   //
   // execute remote commands
   provisioner "remote-exec" {
-    inline     = ["sudo chmod 700 /root/bin/mkswap.sh", "sudo /root/bin/mkswap.sh"]
+    inline     = ["sudo chmod 700 /root/bin/mkswap.sh", "sudo chmod 700 /root/bin/aptupdate.sh", "sudo chmod 700 /root/bin/wpinstall.sh", "sudo /root/bin/mkswap.sh 8", "sudo /root/bin/aptupdate.sh"]
     on_failure = continue
   }
+
   //
-  // SSH to remote server and execute commands in the /root/ folder.
+  // possible failure
+  //    aptupdate.sh
+  // execute remote commands
+  //    $ apt-get update
+  //    $ apt-get install --assume-yes php7.2-cli php7.2-mysql php7.2-xml
+  
+  //
+  // execute remote commands
+  provisioner "remote-exec" {
+    inline     = ["sudo /root/bin/wpinstall.sh ${data.digitalocean_account.objDoAcct.email} ${var.strDoProject} ${var.strDoDomain}"]
+    on_failure = continue
+  }
+
+  //
+  // possible failure
+  //    wpinstall.sh
+  // execute remote commands (enter Wordpress email, site, domain):
+  //    $ ./bin/wpinstall.sh do4@dennislwm.anonaddy.com Izzy klix.cam
+
+  //
   // An interactive script that runs will first prompt you for your domain.
+  // * You can read more information about the OpenLiteSpeed WordPress One-Click app below:
+  //    https://docs.litespeedtech.com/cloud/images/wordpress/
   //
   // On the server:
   // * The default web root is located at /var/www/html
@@ -46,8 +71,10 @@ resource "digitalocean_droplet" "objWp" {
   //    sudo cat .litespeed_password
   // * The WordPress Cache plugin, LSCache, is located at
   //    /var/www/html/wp-content/plugins/litespeed-cache
+  // * The WordPress is located at /var/www/html
   // * The phpMyAdmin is located at /var/www/phpmyadmin
   // * A script will run that will allow you to add a domain to the web server and implement SSL.
+  //
 }
 
 //
@@ -55,4 +82,19 @@ resource "digitalocean_droplet" "objWp" {
 resource "digitalocean_project" "objDoProject" {
   name      = var.strDoProject
   resources = [digitalocean_droplet.objWp.urn]
+}
+
+//
+//  Create a domain for this project
+resource "digitalocean_domain" "objDomain" {
+  name       = var.strDoDomain
+  ip_address = digitalocean_droplet.objWp.ipv4_address
+}
+//
+//  Add a CNAME record to redirect www
+resource "digitalocean_record" "objCname" {
+  domain = digitalocean_domain.objDomain.name
+  type   = "CNAME"
+  name   = "www"
+  value  = "@"
 }
