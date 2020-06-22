@@ -13,6 +13,9 @@ output "server_ip_fold" {
 output "server_ip_jitsi" {
   value = module.jitsi.server_ip
 }
+output "server_ip_pynotebook" {
+  value = module.pynotebook.server_ip
+}
 output "server_ip_rqlite" {
   value = module.rqlite.server_ip
 }

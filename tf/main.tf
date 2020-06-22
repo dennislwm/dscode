@@ -45,25 +45,6 @@ module rqlite {
   strDoRegion = var.strDoRegion
   strDoSize   = var.strDoSize
 }
-module rstudio {
-  //
-  //  Override in variables.tf file in modules folder
-  //    strDoProject
-  //    strDoImage
-  //    strDoSize
-  //
-  source = "./modules/rstudio/"
-  //
-  //  Declare BELOW to use GENERIC variables.tf in root folder
-  //
-  objSshKey   = [digitalocean_ssh_key.objSshKey.fingerprint]
-  strSshPath  = var.strSshPath
-  strSshPte   = var.strSshPte
-  strRootPath = var.strRootPath
-  strDataPath = var.strDataPath
-  strDoDomain = var.strDoDomain
-  strDoRegion = var.strDoRegion
-}
 
 //
 //  Modules with NOIP domain
@@ -84,6 +65,44 @@ module couchdb {
   strDataPath = var.strDataPath
   strDoRegion = var.strDoRegion
   strDoSize   = var.strDoSize
+}
+module pynotebook {
+  //
+  //  Override in variables.tf file in modules folder
+  //    strDoProject
+  //    strDoImage
+  //    strDoSize
+  //
+  source = "./modules/pynotebook/"
+  //
+  //  Declare BELOW to use GENERIC variables.tf in root folder
+  //
+  objSshKey   = [digitalocean_ssh_key.objSshKey.fingerprint]
+  strSshPath  = var.strSshPath
+  strSshPte   = var.strSshPte
+  strRootPath = var.strRootPath
+  strDataPath = var.strDataPath
+  strDoDomain = var.strDoDomain
+  strDoRegion = var.strDoRegion
+}
+module rstudio {
+  //
+  //  Override in variables.tf file in modules folder
+  //    strDoProject
+  //    strDataPath
+  //    strDoImage
+  //    strDoSize
+  //
+  source = "./modules/rstudio/"
+  //
+  //  Declare BELOW to use GENERIC variables.tf in root folder
+  //
+  objSshKey   = [digitalocean_ssh_key.objSshKey.fingerprint]
+  strSshPath  = var.strSshPath
+  strSshPte   = var.strSshPte
+  strRootPath = var.strRootPath
+  strDoDomain = var.strDoDomain
+  strDoRegion = var.strDoRegion
 }
 module teedy {
   //

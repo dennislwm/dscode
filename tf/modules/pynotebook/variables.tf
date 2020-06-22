@@ -11,11 +11,10 @@ variable strRootPath {
   description = "Path to local root folder (use default in root)"
 }
 variable strDataPath {
-  default     = "d:\\denbrige\\180 FxOption\\103 FxOptionVerBack\\083 FX-Git-Pull\\09FX-Git-Pro\\"
   description = "Path to local data folder (use default in root)"
 }
 variable strDoProject {
-  default     = "rstudio"
+  default     = "pynotebook"
   description = "Name of project per droplet (override in modules)"
 }
 variable strDoDomain {

@@ -68,6 +68,7 @@ The backup of remote files from each droplet is done from the shell using a cust
           |- ssh.conf                 <-- SSH configuration file
        +- docker/                     <-- Root of docker files
           +- couchdb/                 <-- Docker files for CouchDB
+          +- pynotebook/              <-- Docker files for Jupyter Notebook
           +- rstudio/                 <-- Docker files for RStudio
           +- wp/                      <-- Docker files for WordPress (deprecated by OpenLiteSpeed image)
        +- docker-teedy/               <-- Holds any docker files for Teedy
@@ -89,6 +90,7 @@ The backup of remote files from each droplet is done from the shell using a cust
                 |- outputs.tf         <-- Returns outputs in module to main.tf file in root
              +- fold/                 <-- TF module files for Folding@Home
              +- jitsi/                <-- TF module files for Jitsi
+             +- pynotebook/           <-- TF module files for Jupyter Notebook
              +- rqlite/               <-- TF module files for RqLite
              +- rstudio/              <-- TF module files for RStudio
              +- teedy/                <-- TF module files for Teedy
