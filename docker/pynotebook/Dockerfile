@@ -6,10 +6,24 @@
 # Assert Anaconda 64-bit
 FROM continuumio/anaconda3
 
-# Assert Pip install
-CMD [ "pip", "install", "notebook" ]
-CMD [ "opt/conda/bin/pip", "install", "backtrader[plotting] sklearn" ]
-CMD [ "opt/conda/bin/conda", "install", "statsmodels seaborn"]
+RUN \
+  apt-get update \
+  && apt-get install build-essential --yes
+
+RUN \
+  wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz \
+  && tar -xzf ta-lib-0.4.0-src.tar.gz \
+  && cd ta-lib \
+  && ./configure --prefix=/usr \
+  && make \
+  && make install \
+  && ldconfig
+
+RUN \
+  pip install notebook \
+  && opt/conda/bin/pip install backtrader[plotting] sklearn ta-lib \
+  && opt/conda/bin/conda install statsmodels seaborn
+
 CMD [ "jupyter", "notebook", "--ip=0.0.0.0", "--allow-root" ]
 
 # Assert Open port
