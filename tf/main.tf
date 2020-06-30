@@ -117,7 +117,9 @@ module teedy {
   objSshKey   = [digitalocean_ssh_key.objSshKey.fingerprint]
   strSshPath  = var.strSshPath
   strSshPte   = var.strSshPte
+  strUserPass = var.strUserPass
   strRootPath = var.strRootPath
+  strDataPath = var.strDataPath
   strDoRegion = var.strDoRegion
   strDoSize   = var.strDoSize
 }

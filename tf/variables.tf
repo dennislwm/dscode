@@ -8,6 +8,9 @@
 variable strDoToken {
   description = "DigitalOcean Token required for API access"
 }
+variable strUserPass {
+  description = "User and password required for NoIP.com API access"
+}
 variable strSshPath {
   default     = "c:\\users\\denbrige\\.ssh\\"
   description = "Path to local SSH folder"

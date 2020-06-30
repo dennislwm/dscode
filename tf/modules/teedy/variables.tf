@@ -7,11 +7,17 @@ variable strSshPath {
 variable strSshPte {
   description = "Name of local SSH private_key file (use default in root)"
 }
+variable strUserPass {
+  description = "User and password required for NoIP.com API access"
+}
 variable strRootPath {
   description = "Path to local root folder (use default in root)"
 }
+variable strDataPath {
+  description = "Path to local data folder (use default in root)"
+}
 variable strDoProject {
-  default     = "Teedy"
+  default     = "teedy"
   description = "Name of project per droplet (override in modules)"
 }
 variable strDoImage {
@@ -22,6 +28,5 @@ variable strDoRegion {
   description = "Region for droplet (use default in root)"
 }
 variable strDoSize {
-  default     = "s-2vcpu-4gb"
   description = "Size for droplet (override in modules)"
 }

@@ -60,6 +60,7 @@ The backup of remote files from each droplet is done from the shell using a cust
        +- bin/                        <-- Holds any executable files
           |- aptupdate.sh             <-- Updates apt-get and installs php modules
           |- mkswap.sh                <-- Creates a swapfile in a Bash terminal for production
+          |- setip.sh                 <-- Updates IP address of dynamic domain at NoIP.com
           |- wpbackup.sh              <-- WP-CLI backup of Wordpress files
           |- wpclirc.sh               <-- WP-CLI alias file
           |- wpinstall.sh             <-- WP-CLI install of Wordpress files
@@ -68,13 +69,12 @@ The backup of remote files from each droplet is done from the shell using a cust
           |- ssh.conf                 <-- SSH configuration file
        +- docker/                     <-- Root of docker files
           +- couchdb/                 <-- Docker files for CouchDB
-          +- pynotebook/              <-- Docker files for Jupyter Notebook
           +- rstudio/                 <-- Docker files for RStudio
+          +- teedy/                   <-- Docker files for Teedy
+             |- Caddyfile             <-- Caddy configuration file for Let's Encrypt
+             |- docker-compose.yml    <-- Docker compose file for production
+             |- docker-compose-win.yml<-- Docker compose file for development
           +- wp/                      <-- Docker files for WordPress (deprecated by OpenLiteSpeed image)
-       +- docker-teedy/               <-- Holds any docker files for Teedy
-          |- Caddyfile                <-- Caddy configuration file for Let's Encrypt
-          |- docker-compose.yml       <-- Docker compose file for production
-          |- docker-compose-win.yml   <-- Docker compose file for development
        +- js/                         <-- Holds any Javascript files
           |- gulp.js                  <-- Automate scripts for deployment (deprecated)
           |- gulp-plus.js             <-- Custom include library (deprecated)
@@ -82,7 +82,7 @@ The backup of remote files from each droplet is done from the shell using a cust
           |- main.tf                  <-- Main TF file (required)
           |- variables.tf             <-- Default variables declaration file for root
           |- outputs.tf               <-- Default outputs declaration file for root
-          |- terraform.tfvars         <-- Secret variables declaration file for tokens (.gitignore)
+          |- terraform.tfvars         <-- Secret variables declaration file for token, user and passwords (.gitignore)
           +- modules/                 <-- Nested modules
              +- couchdb/              <-- Holds any TF files for CouchDB
                 |- couchdb.tf         <-- Resources TF file
