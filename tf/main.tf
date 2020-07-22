@@ -141,8 +141,29 @@ module tinode {
   strDoSize   = var.strDoSize
 }
 
+
 //
 //  Modules with DNS domain
+module caprover {
+  //
+  //  Override in variables.tf file in modules folder
+  //    strDoProject
+  //    strDoDomain
+  //    strDoImage
+  //    strDoSize
+  //
+  source = "./modules/caprover/"
+  //
+  //  Declare BELOW to use GENERIC variables.tf in root folder
+  //
+  objSshKey   = [digitalocean_ssh_key.objSshKey.fingerprint]
+  strSshPath  = var.strSshPath
+  strSshPte   = var.strSshPte
+  strUserPass = var.strUserPass
+  strRootPath = var.strRootPath
+  strDataPath = var.strDataPath
+  strDoRegion = var.strDoRegion
+}
 module jitsi {
   //
   //  Override in variables.tf file in modules folder

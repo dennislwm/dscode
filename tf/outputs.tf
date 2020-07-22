@@ -4,6 +4,9 @@ output "email" {
 output "droplet_limit" {
   value = data.digitalocean_account.objDoAcct.droplet_limit
 }
+output "server_ip_caprover" {
+  value = module.caprover.server_ip
+}
 output "server_ip_couchdb" {
   value = module.couchdb.server_ip
 }

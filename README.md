@@ -74,7 +74,7 @@ The backup of remote files from each droplet is done from the shell using a cust
              |- Caddyfile             <-- Caddy configuration file for Let's Encrypt
              |- docker-compose.yml    <-- Docker compose file for production
              |- docker-compose-win.yml<-- Docker compose file for development
-          +- wp/                      <-- Docker files for WordPress (deprecated by OpenLiteSpeed image)
+          +- wp/                      <-- Docker files for WordPress (deprecated by Caprover image)
        +- js/                         <-- Holds any Javascript files
           |- gulp.js                  <-- Automate scripts for deployment (deprecated)
           |- gulp-plus.js             <-- Custom include library (deprecated)
@@ -84,6 +84,7 @@ The backup of remote files from each droplet is done from the shell using a cust
           |- outputs.tf               <-- Default outputs declaration file for root
           |- terraform.tfvars         <-- Secret variables declaration file for token, user and passwords (.gitignore)
           +- modules/                 <-- Nested modules
+             +- caprover/             <-- TF module files for Caprover
              +- couchdb/              <-- Holds any TF files for CouchDB
                 |- couchdb.tf         <-- Resources TF file
                 |- variables.tf       <-- Overrides inputs of variables.tf file in root
@@ -95,7 +96,7 @@ The backup of remote files from each droplet is done from the shell using a cust
              +- rstudio/              <-- TF module files for RStudio
              +- teedy/                <-- TF module files for Teedy
              +- tinode/               <-- TF module files for Tinode
-             +- wp/                   <-- TF module files for WordPress
+             +- wp/                   <-- TF module files for WordPress (deprecated by Caprover image)
 
 ---
 ### Prerequisite
