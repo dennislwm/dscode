@@ -10,8 +10,14 @@ output "server_ip_caprover" {
 output "server_ip_couchdb" {
   value = module.couchdb.server_ip
 }
+output "server_ip_flaskadmin" {
+  value = module.flaskadmin.server_ip
+}
 output "server_ip_fold" {
   value = module.fold.server_ip
+}
+output "server_ip_guacamole" {
+  value = module.guacamole.server_ip
 }
 output "server_ip_jitsi" {
   value = module.jitsi.server_ip

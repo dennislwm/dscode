@@ -52,7 +52,7 @@ resource "digitalocean_droplet" "objCouchdb" {
   //
   // execute remote commands
   provisioner "remote-exec" {
-    inline     = ["sudo chmod 700 /root/bin/mkswap.sh", "sudo /root/bin/mkswap.sh", "sudo chmod 700 /root/bin/setip.sh", "sudo /root/bin/setip.sh ${digitalocean_droplet.objCouchdb.ipv4_address} ${var.strDoProject}"]
+    inline     = ["sudo chmod 700 /root/bin/mkswap.sh", "sudo /root/bin/mkswap.sh", "sudo chmod 700 /root/bin/setip.sh", "sudo /root/bin/setip.sh ${digitalocean_droplet.objCouchdb.ipv4_address} ${var.strDoProject} ${var.strUserPass}"]
     on_failure = continue
   }
   //

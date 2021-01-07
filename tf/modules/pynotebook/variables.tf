@@ -10,6 +10,9 @@ variable strSshPte {
 variable strRootPath {
   description = "Path to local root folder (use default in root)"
 }
+variable strUserPass {
+  description = "User and password required for NoIP.com API access"
+}
 variable strDataPath {
   description = "Path to local data folder (use default in root)"
 }

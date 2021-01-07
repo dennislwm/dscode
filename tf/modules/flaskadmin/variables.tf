@@ -17,7 +17,7 @@ variable strDataPath {
   description = "Path to local data folder (use default in root)"
 }
 variable strDoProject {
-  default     = "couchdb"
+  default     = "flaskadmin"
   description = "Name of project per droplet (override in modules)"
 }
 variable strDoImage {

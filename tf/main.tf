@@ -61,8 +61,50 @@ module couchdb {
   objSshKey   = [digitalocean_ssh_key.objSshKey.fingerprint]
   strSshPath  = var.strSshPath
   strSshPte   = var.strSshPte
+  strUserPass = var.strUserPass
   strRootPath = var.strRootPath
   strDataPath = var.strDataPath
+  strDoDomain = var.strDoDomain  
+  strDoRegion = var.strDoRegion
+  strDoSize   = var.strDoSize
+}
+module flaskadmin {
+  //
+  //  Override in variables.tf file in modules folder
+  //    strDoProject
+  //    strDoImage
+  //
+  source = "./modules/flaskadmin/"
+  //
+  //  Declare BELOW to use GENERIC variables.tf in root folder
+  //
+  objSshKey   = [digitalocean_ssh_key.objSshKey.fingerprint]
+  strSshPath  = var.strSshPath
+  strSshPte   = var.strSshPte
+  strUserPass = var.strUserPass
+  strRootPath = var.strRootPath
+  strDataPath = var.strDataPath
+  strDoDomain = var.strDoDomain  
+  strDoRegion = var.strDoRegion
+  strDoSize   = var.strDoSize
+}
+module guacamole {
+  //
+  //  Override in variables.tf file in modules folder
+  //    strDoProject
+  //    strDoImage
+  //
+  source = "./modules/guacamole/"
+  //
+  //  Declare BELOW to use GENERIC variables.tf in root folder
+  //
+  objSshKey   = [digitalocean_ssh_key.objSshKey.fingerprint]
+  strSshPath  = var.strSshPath
+  strSshPte   = var.strSshPte
+  strUserPass = var.strUserPass
+  strRootPath = var.strRootPath
+  strDataPath = var.strDataPath
+  strDoDomain = var.strDoDomain  
   strDoRegion = var.strDoRegion
   strDoSize   = var.strDoSize
 }
@@ -80,6 +122,7 @@ module pynotebook {
   objSshKey   = [digitalocean_ssh_key.objSshKey.fingerprint]
   strSshPath  = var.strSshPath
   strSshPte   = var.strSshPte
+  strUserPass = var.strUserPass
   strRootPath = var.strRootPath
   strDataPath = var.strDataPath
   strDoDomain = var.strDoDomain
@@ -197,6 +240,7 @@ module wp {
   strSshPath  = var.strSshPath
   strSshPte   = var.strSshPte
   strRootPath = var.strRootPath
+  strDoDomain = var.strDoDomain  
   strDoRegion = var.strDoRegion
 }
 
