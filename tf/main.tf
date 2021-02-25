@@ -1,4 +1,4 @@
-provider digitalocean {
+provider "digitalocean" {
   token = var.strDoToken
 }
 

@@ -23,28 +23,38 @@ resource "digitalocean_droplet" "objCouchdb" {
   //
   // copy executable files to remote folder
   provisioner "file" {
-    source      = "${var.strRootPath}\\bin\\"
-    destination = "/root/"
+    //Windows version
+    //source      = "${var.strRootPath}\\bin\\"
+    //destination = "/root/"
+    source      = "${var.strRootPath}/bin/"
+    destination = "/root/bin/"
     on_failure  = continue
   }
   //
   // copy data files to remote folder
   provisioner "file" {
-    source      = "${var.strDataPath}\\${var.strDoProject}\\"
-    destination = "/root/"
+    //Windows version
+    //source      = "${var.strDataPath}\\${var.strDoProject}\\"
+    //destination = "/root/"
+    source      = "${var.strDataPath}/${var.strDoProject}/"
+    destination = "/root/${var.strDoProject}/"
     on_failure  = continue
   }
   //
   // copy data files to remote folder
   provisioner "file" {
-    source      = "${var.strRootPath}\\docker\\${var.strDoProject}\\Caddyfile"
+    //Windows version
+    //source      = "${var.strRootPath}\\docker\\${var.strDoProject}\\Caddyfile"
+    source      = "${var.strRootPath}/docker/${var.strDoProject}/Caddyfile"
     destination = "/root/${var.strDoProject}/Caddyfile"
     on_failure  = continue
   }
   //
   // copy docker files to remote folder
   provisioner "file" {
-    source      = "${var.strRootPath}\\docker\\${var.strDoProject}\\docker-compose.yml"
+    //Windows version
+    //source      = "${var.strRootPath}\\docker\\${var.strDoProject}\\docker-compose.yml"
+    source      = "${var.strRootPath}/docker/${var.strDoProject}/docker-compose.yml"
     destination = "/root/${var.strDoProject}/docker-compose.yml"
     on_failure  = continue
   }

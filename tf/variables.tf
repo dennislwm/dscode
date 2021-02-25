@@ -12,7 +12,9 @@ variable strUserPass {
   description = "User and password required for NoIP.com API access"
 }
 variable strSshPath {
-  default     = "c:\\users\\denbrige\\.ssh\\"
+  //Windows version
+  //default     = "c:\\users\\denbrige\\.ssh\\"
+  default     = "/Users/dennislee/.ssh/"
   description = "Path to local SSH folder"
 }
 variable strSshId {
@@ -24,11 +26,15 @@ variable strSshPte {
   description = "Name of local SSH private_key file"
 }
 variable strRootPath {
-  default     = "d:\\denbrige\\180 FxOption\\103 FxOptionVerBack\\083 FX-Git-Pull\\19dscode\\"
+  //Windows version
+  //default     = "d:\\denbrige\\180 FxOption\\103 FxOptionVerBack\\083 FX-Git-Pull\\19dscode\\"
+  default     = "/Users/dennislee/fx-git-pull/19dscode/"
   description = "Path to local root folder"
 }
 variable strDataPath {
-  default     = "d:\\docker\\"
+  //Windows version
+  //default     = "d:\\docker\\"
+  default     = "/Users/dennislee/docker/"
   description = "Path to local data folder"
 }
 variable strDoDomain {
