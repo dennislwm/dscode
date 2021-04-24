@@ -12,8 +12,8 @@ docker/wp/
 docker-caddy/
 docker-commento/
 node_modules/
-tf/.terraform/
-tf/*.tfstate*
-tf/*.tfvars
-tf/*.plan
+.terraform*
+*.tfstate*
+*.tfvars
+*.plan
 tf/modules/all/

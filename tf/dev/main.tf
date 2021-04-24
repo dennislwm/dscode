@@ -18,7 +18,7 @@ module fold {
   //    strDoImage
   //    strDoSize
   //
-  source = "./modules/fold"
+  source = "../modules/fold"
   //
   //  Declare BELOW to use GENERIC variables.tf in root folder
   //
@@ -34,7 +34,7 @@ module rqlite {
   //    strDoProject
   //    strDoImage
   //
-  source = "./modules/rqlite/"
+  source = "../modules/rqlite/"
   //
   //  Declare BELOW to use GENERIC variables.tf in root folder
   //
@@ -54,7 +54,7 @@ module couchdb {
   //    strDoProject
   //    strDoImage
   //
-  source = "./modules/couchdb/"
+  source = "../modules/couchdb/"
   //
   //  Declare BELOW to use GENERIC variables.tf in root folder
   //
@@ -74,7 +74,7 @@ module flaskadmin {
   //    strDoProject
   //    strDoImage
   //
-  source = "./modules/flaskadmin/"
+  source = "../modules/flaskadmin/"
   //
   //  Declare BELOW to use GENERIC variables.tf in root folder
   //
@@ -94,7 +94,27 @@ module guacamole {
   //    strDoProject
   //    strDoImage
   //
-  source = "./modules/guacamole/"
+  source = "../modules/guacamole/"
+  //
+  //  Declare BELOW to use GENERIC variables.tf in root folder
+  //
+  objSshKey   = [digitalocean_ssh_key.objSshKey.fingerprint]
+  strSshPath  = var.strSshPath
+  strSshPte   = var.strSshPte
+  strUserPass = var.strUserPass
+  strRootPath = var.strRootPath
+  strDataPath = var.strDataPath
+  strDoDomain = var.strDoDomain  
+  strDoRegion = var.strDoRegion
+  strDoSize   = var.strDoSize
+}
+module nginxpm {
+  //
+  //  Override in variables.tf file in modules folder
+  //    strDoProject
+  //    strDoImage
+  //
+  source = "../modules/nginxpm/"
   //
   //  Declare BELOW to use GENERIC variables.tf in root folder
   //
@@ -115,7 +135,7 @@ module pynotebook {
   //    strDoImage
   //    strDoSize
   //
-  source = "./modules/pynotebook/"
+  source = "../modules/pynotebook/"
   //
   //  Declare BELOW to use GENERIC variables.tf in root folder
   //
@@ -136,7 +156,7 @@ module rstudio {
   //    strDoImage
   //    strDoSize
   //
-  source = "./modules/rstudio/"
+  source = "../modules/rstudio/"
   //
   //  Declare BELOW to use GENERIC variables.tf in root folder
   //
@@ -153,7 +173,7 @@ module teedy {
   //    strDoProject
   //    strDoImage
   //
-  source = "./modules/teedy/"
+  source = "../modules/teedy/"
   //
   //  Declare BELOW to use GENERIC variables.tf in root folder
   //
@@ -172,7 +192,7 @@ module tinode {
   //    strDoProject
   //    strDoImage
   //
-  source = "./modules/tinode/"
+  source = "../modules/tinode/"
   //
   //  Declare BELOW to use GENERIC variables.tf in root folder
   //
@@ -195,7 +215,7 @@ module caprover {
   //    strDoImage
   //    strDoSize
   //
-  source = "./modules/caprover/"
+  source = "../modules/caprover/"
   //
   //  Declare BELOW to use GENERIC variables.tf in root folder
   //
@@ -214,7 +234,7 @@ module jitsi {
   //    strDoImage
   //    strDoSize
   //
-  source = "./modules/jitsi/"
+  source = "../modules/jitsi/"
   //
   //  Declare BELOW to use GENERIC variables.tf in root folder
   //
@@ -232,7 +252,7 @@ module wp {
   //    strDoImage
   //    strDoSize
   //
-  source = "./modules/wp/"
+  source = "../modules/wp/"
   //
   //  Declare BELOW to use GENERIC variables.tf in root folder
   //
