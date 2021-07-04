@@ -128,6 +128,26 @@ module nginxpm {
   strDoRegion = var.strDoRegion
   strDoSize   = var.strDoSize
 }
+module nginxpmlite {
+  //
+  //  Override in variables.tf file in modules folder
+  //    strDoProject
+  //    strDoImage
+  //
+  source = "../modules/nginxpmlite/"
+  //
+  //  Declare BELOW to use GENERIC variables.tf in root folder
+  //
+  objSshKey   = [digitalocean_ssh_key.objSshKey.fingerprint]
+  strSshPath  = var.strSshPath
+  strSshPte   = var.strSshPte
+  strUserPass = var.strUserPass
+  strRootPath = var.strRootPath
+  strDataPath = var.strDataPath
+  strDoDomain = var.strDoDomain  
+  strDoRegion = var.strDoRegion
+  strDoSize   = var.strDoSize
+}
 module pynotebook {
   //
   //  Override in variables.tf file in modules folder

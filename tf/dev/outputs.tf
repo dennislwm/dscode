@@ -25,6 +25,9 @@ output "server_ip_jitsi" {
 output "server_ip_nginxpm" {
   value = module.nginxpm.server_ip
 }
+output "server_ip_nginxpmlite" {
+  value = module.nginxpmlite.server_ip
+}
 output "server_ip_pynotebook" {
   value = module.pynotebook.server_ip
 }

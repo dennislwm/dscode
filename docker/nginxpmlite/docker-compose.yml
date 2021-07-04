@@ -1,0 +1,56 @@
+version: "3"
+services:
+  nginxpm:
+    depends_on:
+      - portainer
+    image: 'jlesage/nginx-proxy-manager'
+    restart: unless-stopped
+    container_name: objNginxpm
+    ports:
+      # Public HTTP Port:
+      - '80:8080'
+      # Public HTTPS Port:
+      - '443:4443'
+      # Admin Web Port:
+      - '81:8181'
+      # Default Administrator User
+      #   URL: http://localhost:81
+      #   Email: admin@example.com
+      #   Password: changeme
+    environment:
+      # DB_SQLITE_FILE: "/data/database.sqlite"
+      # Uncomment this if IPv6 is not enabled on your host
+      DISABLE_IPV6: 1
+    volumes:
+      - vol_config:/config:rw
+    networks:
+      - net_public
+
+  portainer:
+    image: portainer/portainer
+    container_name: objPortainer
+    command: -H unix:///var/run/docker.sock
+    restart: unless-stopped
+    ports:
+      - 9000:9000
+      - 8000:8000
+      # Default Administrator User
+      #   URL: http://localhost:9000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - vol_data_portainer:/data:rw
+    networks:
+      - net_public
+      
+volumes: 
+  vol_config:
+  vol_data_portainer:
+  # Named volumes are stored in a part of the host filesystem 
+  # which is managed by Docker (/var/lib/docker/volumes/ on Linux)
+  # Docker appends [FOLDER] name to named volumes.
+  #   nginxpm_vol_config
+
+networks:
+  net_public:
+  # Docker appends [FOLDER] name to named networks.
+  #   nginxpm_net_public
