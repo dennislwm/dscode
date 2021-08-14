@@ -14,7 +14,7 @@ variable strUserPass {
 variable strSshPath {
   //Windows version
   //default     = "c:\\users\\denbrige\\.ssh\\"
-  default     = "/Users/dennislee/.ssh/"
+  default     = "/Users/dennislwm/.ssh/"
   description = "Path to local SSH folder"
 }
 variable strSshId {
